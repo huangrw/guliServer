@@ -1,0 +1,15 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: service-oss
+
+
+aliyun:
+  oos:
+    file:
+      endpoint: https://oss-cn-guangzhou.aliyuncs.com
+      accessKeyId: LTAI5tPWaj6W1NdSg9TcE1de
+      accessKeySecret: 0zm4vzTHOyI8M6ccfZ21paoad52hAG
+      bucketName: blogpic2022
