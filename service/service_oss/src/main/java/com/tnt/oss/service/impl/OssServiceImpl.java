@@ -4,6 +4,8 @@ import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.OSSException;
 import com.aliyuncs.exceptions.ClientException;
+import com.tnt.commonutils.ResultCode;
+import com.tnt.exceptionHandler.MyException;
 import com.tnt.oss.service.OssService;
 import com.tnt.oss.utils.ConstanPropertiesUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.UUID;
 
 /**
  * @author huangrw
@@ -39,10 +42,10 @@ public class OssServiceImpl implements OssService {
         // 获取文件名称
         String originalFilename = file.getOriginalFilename();
 
+        String uuid = UUID.randomUUID().toString().replace("-","");
+
         log.info("文件名:{}",originalFilename);
-
-
-        String objectName = "guli/avatar/"+originalFilename;
+        String objectName = "guli/avatar/"+uuid+originalFilename;
 
 
         log.info("文件全路径:{}",objectName);
@@ -72,7 +75,7 @@ public class OssServiceImpl implements OssService {
                     + "a serious internal problem while trying to communicate with OSS, "
                     + "such as not being able to access the network.");
             System.out.println("Error Message:" + ce.getMessage());
-            return null;
+            throw new MyException(ResultCode.ERROR,"图片上传失败");
         } finally {
             // 关闭资源
             if (ossClient != null) {

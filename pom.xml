@@ -49,10 +49,18 @@
         <knife4j.version>2.0.4</knife4j.version>
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
         <spring-boot-starter-aop.version>2.6.7</spring-boot-starter-aop.version>
+        <spring-boot-test-starter>2.3.7.RELEASE</spring-boot-test-starter>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <!--Test-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-test-starter}</version>
+            </dependency>
 
             <!--Knife4j-->
             <dependency>

@@ -34,7 +34,7 @@ public class EduTeacherController {
     @GetMapping("findAll")
     public Res findAllTeacher(){
         try {
-            System.out.println(1/0);
+           // System.out.println(1/0);
         }catch (Exception e){
             log.warn("出现错误");
             throw new MyException(2002,"出现自定义异常");
